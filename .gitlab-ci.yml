@@ -1,0 +1,17 @@
+.job_template:   &job_definition
+  allow_failure: false
+  image:         maven:latest
+  tags:
+    - aws
+    - docker
+    - mercedes
+    - runner
+
+stages:
+  - prepare
+
+maven-prepare:
+  <<:            *job_definition
+  stage:         prepare
+  script:
+    - echo "hello from $CI_COMMIT_REF_NAME"
